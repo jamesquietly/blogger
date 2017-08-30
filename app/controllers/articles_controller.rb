@@ -21,7 +21,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-    @article.author_name = current_user.username
+    @article.author_name = current_user.id.to_s
     @article.save
 
     flash.notice = "Article '#{@article.title}' was created!"
