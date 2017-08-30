@@ -3,7 +3,7 @@ class Article < ApplicationRecord
 	has_many :taggings, dependent: :destroy
 	has_many :tags, through: :taggings
 
-	has_attached_file :image
+	has_attached_file :image, {:preserve_files => "false"}
 	validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpg", "image/png"]
 
 	def tag_list
