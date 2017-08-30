@@ -4,6 +4,12 @@
   <% @articles.each do |article| %>
     <li>
       <%= link_to article.title, article_path(article) %>
+      <% if !article.tags.empty?%>
+        Tags:
+        <% article.tags.each do |tag| %>
+          <%= link_to tag.name, tag_path(tag) %>
+        <% end %>
+      <% end %>
     </li>
   <% end %>
 </ul>
