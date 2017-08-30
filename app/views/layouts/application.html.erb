@@ -12,6 +12,17 @@
     <p class="flash">
       <%= flash.notice %>
     </p>
+    <div id="nav">
+      <%= link_to "All Articles", articles_path %>
+      <%= link_to "All Tags", tags_path %>
+      <% if logged_in? %>
+        <%= link_to "(Logout)", logout_path %>
+        <%= "Logged in as #{current_user.email}" %>
+        <%= link_to "Create a New Article", new_article_path, class: "new_article" %>
+      <% else %>
+        <%= link_to "(Login)", login_path %>
+      <% end %>
+    </div>
     <div id="container">
       <div id="content"
         <%= yield %>
