@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
 	include ArticlesHelper
 
-  before_action :require_login, except: [:index, :show]
+  before_action :require_login, except: [:index, :show, :popular]
 
   def index
     @articles = Article.all
@@ -48,5 +48,9 @@ class ArticlesController < ApplicationController
   	flash.notice = "Article '#{@article.title}' was updated!"
 
   	redirect_to article_path(@article)
+  end
+
+  def popular
+    @popular = Article.order("view_count DESC").limit(3)
   end
 end
