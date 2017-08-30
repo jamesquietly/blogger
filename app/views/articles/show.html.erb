@@ -1,5 +1,13 @@
 <h1><%= @article.title %></h1>
 <p>
+  Views:
+  <% if @article.view_count %>
+    <%= @article.view_count %>
+  <% else %>
+    0
+  <% end %>
+</p>
+<p>
 	Tags:
 	<% @article.tags.each do |tag| %>
 	  <%= link_to tag.name, tag_path(tag) %>
